@@ -1,28 +1,26 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class ParcelLocker {
 
     private List<Parcel> parcels = new ArrayList<>();
-    private int lockerCapacity = 3;
+    private int lockerCapacity = 15;
 
     void addParcel(Parcel parcel) {
         if (lockerCapacity > 0) {
-            parcels.add(parcel);
-            setLockerCapacity(lockerCapacity-1);
+            if (parcel != null) {
+                parcels.add(parcel);
+                lockerCapacity--;
+            } else {
+                throw new IllegalArgumentException("Niepoprawna paczka (Nie moze byc NULL)!");
+            }
         } else {
             throw new IllegalArgumentException("Niestety limit paczkomatu zostal osiagniety!");
         }
-
     }
 
-    void getParcels() {
-        if (parcels.isEmpty()) {
-            System.out.println("Brak dodanych paczek");
-        } else {
-            System.out.println("Lista dodanych paczek: ");
-        }
+    void listParcels() {
         for (Parcel p : parcels) {
             System.out.println("Kod: " + p.getCode() + ", waga: " + p.getWeight());
         }
@@ -30,24 +28,20 @@ public class ParcelLocker {
 
     void removeAllParcels() {
         parcels.clear();
-        setLockerCapacity(25);
+        lockerCapacity = 25;
     }
 
     void removeParcel(String code) {
-        for (Parcel p : parcels) {
-            if (code.equals(p.getCode())) {
-                parcels.remove(p);
-            } else {
-                throw new NoSuchElementException("Brak paczki o podanym kodzie!");
+        Iterator<Parcel> it = parcels.iterator();
+        int parcelLength = parcels.size();
+        while(it.hasNext()) {
+            if (it.next().getCode().equals(code)) {
+                it.remove();
+                lockerCapacity++;
             }
         }
-    }
-
-    public int getLockerCapacity() {
-        return lockerCapacity;
-    }
-
-    public void setLockerCapacity(int lockerCapacity) {
-        this.lockerCapacity = lockerCapacity;
+        if (parcelLength == parcels.size()) {
+            throw new IllegalArgumentException("Brak paczki o podanym kodzie");
+        }
     }
 }
