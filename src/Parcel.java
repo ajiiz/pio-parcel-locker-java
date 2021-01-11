@@ -1,4 +1,5 @@
 public abstract class Parcel {
+
     private String code;
     private int weight;
 
@@ -16,12 +17,7 @@ public abstract class Parcel {
     }
 
     public void setWeight(int weight) {
-        if (code != null && weight > 0) {
-            this.weight = weight;
-        } else {
-            throw new IllegalArgumentException("Niepoprawna waga paczki");
-        }
-
+        this.weight = weight;
     }
 
     public String getCode() {
