@@ -1,6 +1,5 @@
-## Witejcie!
-
-#Czestujcie sie!
+# Witejcie!
+## Czestujcie sie!
 * Jedzcie
 * Pijcie
 * Kodujcie
