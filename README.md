@@ -1,4 +1,4 @@
-# Simple Dice Game
+# Simple Parcel Locker
 Application was made for University purposes as class project.
 
 ## Table of contents
