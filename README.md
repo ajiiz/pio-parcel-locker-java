@@ -18,7 +18,7 @@ Application was made for University purposes as class project.
 ## Setup
 * Pull the project from the repository
 ```
-git clone https://github.com/ajiiz/pio-game-java
+git clone https://github.com/ajiiz/pio-parcel-locker-java
 ```
 
 ## License
